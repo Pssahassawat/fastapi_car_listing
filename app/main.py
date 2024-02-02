@@ -49,7 +49,7 @@ def delete_car_info(id: int, db=Depends(db_create_session)):
     if deleted_info:
         return "OK"
     else:
-        raise HTTPException(404, detail=crud.error_message('No car found for token {}'.format(id)))
+        raise HTTPException(404, detail=crud.error_message('No car found for id {}'.format(id)))
 
 
 @app.patch('/car/update/{id}')
@@ -60,7 +60,7 @@ def update_car_info(id: int, info: UpdateCarInfo, db=Depends(db_create_session))
         if updated_info:
             return updated_info
         else:
-            raise HTTPException(404, detail=crud.error_message('No device found for token {}'.format(id)))
+            raise HTTPException(404, detail=crud.error_message('No device found for id {}'.format(id)))
     else:
          HTTPException(400, detail=crud.error_message('No status'))   
 
